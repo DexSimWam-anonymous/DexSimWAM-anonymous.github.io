@@ -31,7 +31,7 @@
   <header class="site-header">
     <nav class="site-nav page-width" aria-label="Main navigation">
       <a class="nav-brand" href="#top"><span class="brand-icon"><svg class="icon"><use href="#icon-mark"/></svg></span>DexSimWAM</a>
-      <div class="nav-links"><a href="#framework">Overview</a><a href="#skills">Task-WAMs</a><a href="#evolution">Self-improvement</a><a href="#sim-to-real">Sim-to-real</a></div>
+      <div class="nav-links"><a href="#framework">Overview</a><a href="#skills">Task-WAMs</a><a href="#sim-to-real">Sim-to-real</a></div>
       <span class="nav-note"><span class="status-dot"></span>Research project</span>
     </nav>
   </header>
@@ -39,7 +39,6 @@
     <section class="publication-header page-width" id="top" aria-labelledby="paper-title">
       <h1 id="paper-title" aria-label="DexSimWAM: Scaling Dexterous World Action Models with Verified Simulation Data"><span class="project-name">DexSimWAM</span> <span class="paper-title">Scaling Dexterous World Action Models<br class="desktop-break"> with Verified Simulation Data</span></h1>
       <p class="publication-authors">Anonymous authors</p>
-      <p class="review-status">Paper under double-blind review</p>
     </section>
     <section class="teaser-section page-width" id="teaser" aria-label="Overview video">
       <figure>
@@ -54,26 +53,26 @@
     </section>
     <section class="abstract-section section-tint" id="abstract" aria-labelledby="abstract-title">
       <div class="page-width abstract-layout">
-        <div><span class="eyebrow">The idea</span><h2 id="abstract-title">Abstract</h2></div>
+        <div><h2 id="abstract-title">Abstract</h2></div>
         <div class="abstract-content">
             <p>Learning transferable dexterous manipulation policies is constrained by the scarcity of large-scale robot data. Simulation offers scale, but synthesizing dexterous trajectories is substantially harder than for grippers: the data must cover diverse multi-finger contacts and hand-object configurations while satisfying language-specified grasp and motion semantics. We introduce DexSimWAM, which combines an agent-guided, retrieval-based synthetic-data pipeline with large-scale World Action Model (WAM) pre-training and task-specific post-training. Given a language-specified task and verifier feedback, the agent guides scene sampling, grasp retrieval, optimization-based path planning, and bounded expansion of a physically validated object-frame grasp bank. Deterministic filters and fixed whole-task verification yield a 16k-hour corpus spanning diverse objects, scenes, grasp styles, and unilateral and bimanual behaviors. On this corpus, DexSimWAM jointly pre-trains visual-dynamics prediction and synchronized arm-hand action generation. Task-specific post-training then adapts the shared WAM with scalable simulation data and targeted real-robot trajectories, supporting 6D object reorientation, functional pouring, articulated-object interaction, long-horizon semantic rearrangement, direct sim-to-real deployment, and physical-domain refinement.</p>
         </div>
       </div>
     </section>
     <section class="content-section page-width" id="framework" aria-labelledby="framework-title">
-      <div class="section-heading"><span class="eyebrow">01 / Framework</span><h2 id="framework-title">DexSimWAM at a Glance</h2><p>Dispatch a capable Task-WAM when one is available. Otherwise, diagnose the gap and grow the family through recursive self-improvement.</p></div>
+      <div class="section-heading"><h2 id="framework-title">DexSimWAM at a Glance</h2><p>Verified simulation data supports WAM pre-training, followed by task-specific post-training with simulation and real-robot data.</p></div>
       <figure class="framework-figure">
-        <!-- FIGURE: Replace this SVG and data-zoom-src with your final framework figure. -->
-        <button class="figure-button" type="button" data-zoom-src="static/images/agentic-wam-framework.svg" aria-label="Enlarge the DexSimWAM framework diagram">
-          <img src="static/images/agentic-wam-framework.svg" width="1400" height="680" alt="A vision-language agent dispatches a capable Task-WAM for closed-loop execution. Capability gaps trigger diagnosis, simulation data synthesis, post-training, and evaluation before model registration." loading="lazy">
+        <!-- Framework figure rendered from dexsimwam_pipeline.pdf. -->
+        <button class="figure-button" type="button" data-zoom-src="static/images/dexsimwam-pipeline.png" aria-label="Enlarge the DexSimWAM framework diagram">
+          <img src="static/images/dexsimwam-pipeline.png" width="3200" height="1477" alt="DexSimWAM pipeline: grasp synthesis, task planning, physical verification, and domain randomization generate simulation data for WAM pre-training, followed by post-training with real-robot data for dexterous manipulation." loading="lazy">
           <span class="expand-label"><svg class="icon"><use href="#icon-expand"/></svg>Expand figure</span>
         </button>
-        <figcaption>Conceptual overview. New or updated Task-WAMs are registered only after whole-task evaluation and prior-skill regression checks.</figcaption>
+        <figcaption>Grasp synthesis, task planning, physical verification, and domain randomization provide scalable data for dexterous manipulation.</figcaption>
       </figure>
     </section>
     <section class="content-section section-tint" id="skills" aria-labelledby="skills-title">
       <div class="page-width">
-        <div class="section-heading"><span class="eyebrow">02 / Task-WAM family</span><h2 id="skills-title">Dexterous Skills in Simulation</h2><p>Task-scoped World Action Models cover PnP, teapot manipulation, PnP6D, and drawer interaction.</p></div>
+        <div class="section-heading"><h2 id="skills-title">Dexterous Skills in Simulation</h2><p>Task-scoped World Action Models cover PnP, teapot manipulation, PnP6D, and drawer interaction.</p></div>
         <div class="media-grid simulation-grid">
           <figure class="media-card">
             <div class="media-frame has-media video-frame">
@@ -114,40 +113,8 @@
         </div>
       </div>
     </section>
-    <section class="content-section page-width" id="evolution" aria-labelledby="evolution-title">
-      <div class="section-heading"><span class="eyebrow">03 / Recursive self-improvement</span><h2 id="evolution-title">From Capability Gaps to New Skills</h2><p>Diagnostic probes guide targeted simulation data synthesis and post-training. Evaluation feeds the next iteration, with prior skills checked before registration.</p></div>
-      <ol class="evolution-steps" aria-label="Recursive self-improvement stages">
-        <li><span class="step-number">01</span><div><strong>Diagnose</strong><span>Identify capability gaps</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
-        <li><span class="step-number">02</span><div><strong>Synthesize</strong><span>Generate targeted sim data</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
-        <li><span class="step-number">03</span><div><strong>Post-train</strong><span>Improve or add a Task-WAM</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
-        <li><span class="step-number">04</span><div><strong>Evaluate</strong><span>Check success &amp; prior skills</span></div></li>
-      </ol>
-      <div class="media-grid two-columns comparison-grid">
-        <figure class="media-card">
-          <div class="comparison-label"><span class="comparison-dot before"></span>Before post-training</div>
-          <!-- MEDIA: Use the same evaluation task in both comparison videos. -->
-          <div class="media-frame" data-media="video" data-src="" data-poster="" data-label="Task execution before post-training"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">Initial capability</span><span class="placeholder-note">Video coming soon</span></div></div>
-          <figcaption><h3>Identify the Limitation</h3><p>An unsupported case reveals where the current Task-WAM needs to improve.</p></figcaption>
-        </figure>
-        <figure class="media-card">
-          <div class="comparison-label"><span class="comparison-dot after"></span>After post-training</div>
-          <div class="media-frame accent-frame" data-media="video" data-src="" data-poster="" data-label="Task execution after post-training"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">Expanded capability</span><span class="placeholder-note">Video coming soon</span></div></div>
-          <figcaption><h3>Acquire a Reusable Skill</h3><p>Targeted training expands the model’s competence or adds a new specialist.</p></figcaption>
-        </figure>
-      </div>
-    </section>
-    <section class="content-section section-tint" id="composition" aria-labelledby="composition-title">
-      <div class="page-width">
-        <div class="section-heading"><span class="eyebrow">04 / Skill composition</span><h2 id="composition-title">Long-Horizon Tasks, Reusable Skills</h2><p>The agent decomposes complex requests and composes task-scoped policies into longer sequences of dexterous actions.</p></div>
-        <figure>
-          <!-- MEDIA: End-to-end long-horizon task demonstration. -->
-          <div class="media-frame wide-frame" data-media="video" data-src="" data-poster="" data-label="Long-horizon skill composition demonstration"><span class="frame-corner-label">END-TO-END DEMONSTRATION</span><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">From one instruction to a sequence of skills</span><span class="placeholder-note">Video coming soon</span></div></div>
-          <figcaption class="sequence-caption"><span>Instruction</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Task decomposition</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Task-WAM dispatch</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Closed-loop execution</span></figcaption>
-        </figure>
-      </div>
-    </section>
     <section class="content-section page-width" id="sim-to-real" aria-labelledby="transfer-title">
-      <div class="section-heading"><span class="eyebrow">05 / Sim-to-real transfer</span><h2 id="transfer-title">Dexterous Manipulation in the Real World</h2><p>Teapot manipulation, PnP6D, and trash collection on the physical robot. Teapot and PnP6D include Base and V.G. settings.</p></div>
+      <div class="section-heading"><h2 id="transfer-title">Dexterous Manipulation in the Real World</h2><p>Teapot manipulation, PnP6D, and trash collection on the physical robot. Teapot and PnP6D include Base and V.G. settings.</p></div>
       <div class="media-grid three-columns real-task-grid">
           <article class="task-demo" data-variant-group aria-labelledby="real-teapot-title">
             <div class="task-demo-heading"><h3 id="real-teapot-title">Teapot</h3><span class="environment-tag real">REAL</span></div>
@@ -241,7 +208,7 @@
     </section>
     <section class="content-section section-tint" id="drawer-rtc" aria-labelledby="drawer-rtc-title">
       <div class="page-width">
-        <div class="section-heading"><span class="eyebrow">06 / RTC comparison</span><h2 id="drawer-rtc-title">Drawer Manipulation with and without RTC</h2><p>Real-world drawer manipulation with Non-RTC and Training-Time RTC settings.</p></div>
+        <div class="section-heading"><h2 id="drawer-rtc-title">Drawer Manipulation with and without RTC</h2><p>Real-world drawer manipulation with Non-RTC and Training-Time RTC settings.</p></div>
         <div class="media-grid two-columns comparison-grid">
           <figure class="media-card" id="real-drawer-non-rtc-panel">
             <h3 class="comparison-label">Non-RTC</h3>
@@ -268,7 +235,7 @@
     </section>
     <section class="content-section section-tint" id="results" aria-labelledby="results-title">
       <div class="page-width">
-        <div class="section-heading"><span class="eyebrow">07 / Continual learning</span><h2 id="results-title">Growing Capabilities. Preserving Skills.</h2><p>Evaluate newly acquired capabilities alongside previously learned skills, using fixed whole-task success criteria.</p></div>
+        <div class="section-heading"><h2 id="results-title">Growing Capabilities. Preserving Skills.</h2><p>Evaluate newly acquired capabilities alongside previously learned skills, using fixed whole-task success criteria.</p></div>
         <div class="media-grid two-columns">
           <figure class="media-card">
             <!-- FIGURE: Add your measured capability-acquisition results. -->

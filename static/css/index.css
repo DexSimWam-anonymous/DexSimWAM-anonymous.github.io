@@ -38,8 +38,6 @@ button:enabled, summary { cursor: pointer; }
 .nav-note { display: flex; align-items: center; gap: 7px; white-space: nowrap; color: #7b8798; font-size: 11px; }
 .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #66918b; flex-shrink: 0; }
 .publication-header { padding-block: 59px 39px; text-align: center; }
-.eyebrow { display: block; color: var(--blue); font-size: 10px; font-weight: 700; letter-spacing: 1.9px; text-transform: uppercase; }
-.publication-header .eyebrow { color: #7b879a; margin-bottom: 16px; letter-spacing: 2.6px; }
 .project-name { display: block; margin-bottom: 15px; color: var(--blue); font-size: clamp(44px, 5.2vw, 66px); font-weight: 780; letter-spacing: -3px; line-height: 1.12; }
 .paper-title { display: block; max-width: 900px; margin-inline: auto; font-size: clamp(26px, 3vw, 37px); font-weight: 650; line-height: 1.24; letter-spacing: -1px; }
 .publication-authors { margin-top: 24px; color: #36445d; font-size: 16px; font-weight: 500; }
@@ -76,11 +74,9 @@ figcaption { color: var(--muted); font-size: 12px; line-height: 1.7; }
 .abstract-layout { max-width: 900px; }
 .abstract-layout > div:first-child { margin-bottom: 24px; text-align: center; }
 h2 { color: var(--ink); font-size: clamp(25px, 2.6vw, 32px); font-weight: 650; letter-spacing: -.85px; line-height: 1.25; }
-.abstract-layout h2 { margin-top: 10px; }
 .abstract-content > p { color: #4c5b72; font-size: 15px; line-height: 1.95; text-align: justify; }
 .content-section { padding-block: 67px; }
 .section-heading { max-width: 790px; margin: 0 auto 32px; text-align: center; }
-.section-heading .eyebrow { margin-bottom: 12px; }
 .section-heading p { max-width: 715px; margin: 15px auto 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
 .framework-figure { text-align: center; }
 .figure-button { position: relative; display: block; width: 100%; padding: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: zoom-in !important; }
@@ -202,7 +198,6 @@ h3 { margin-bottom: 5px; color: #2b3951; font-size: 15px; font-weight: 600; lett
   .nav-links { justify-content: space-between; gap: 15px; width: 100%; }
   .nav-links a { font-size: 11px; }
   .publication-header { padding-block: 43px 31px; }
-  .publication-header .eyebrow { font-size: 8px; letter-spacing: 1.6px; }
   .project-name { font-size: 48px; letter-spacing: -2.4px; margin-bottom: 16px; }
   .paper-title { max-width: 580px; font-size: 28px; letter-spacing: -.75px; line-height: 1.3; }
   .desktop-break { display: none; }
