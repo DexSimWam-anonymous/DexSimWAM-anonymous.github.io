@@ -3,518 +3,293 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <title>DexSimWAM: Scaling Dexterous World Action Models with Verified Simulation Data</title>
+  <meta name="description" content="DexSimWAM scales dexterous World Action Models with verified simulation data, large-scale pre-training, and task-specific post-training.">
+  <meta name="author" content="Anonymous authors">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DexSimWAM: Scaling Dexterous World Action Models with Verified Simulation Data">
+  <meta property="og:description" content="DexSimWAM scales dexterous World Action Models with verified simulation data, large-scale pre-training, and task-specific post-training.">
+  <meta name="citation_title" content="DexSimWAM: Scaling Dexterous World Action Models with Verified Simulation Data">
+  <meta name="citation_author" content="Anonymous authors">
+  <link rel="icon" href="static/images/agentic-wam-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+  <script src="static/js/index.js" defer></script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
+  <!-- Local icons keep the page independent of font and icon CDNs. -->
+  <svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-mark" viewBox="0 0 24 24"><path d="m3 17 5-10 4 7 4-7 5 10M6 17h12"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M14 4h6v6m0-6-7 7M10 20H4v-6m0 6 7-7"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 17 5-5 4 4 4-6 5 7"/><circle cx="8" cy="8" r="1"/></symbol>
+    <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="site-nav page-width" aria-label="Main navigation">
+      <a class="nav-brand" href="#top"><span class="brand-icon"><svg class="icon"><use href="#icon-mark"/></svg></span>DexSimWAM</a>
+      <div class="nav-links"><a href="#framework">Overview</a><a href="#skills">Task-WAMs</a><a href="#evolution">Self-improvement</a><a href="#sim-to-real">Sim-to-real</a></div>
+      <span class="nav-note"><span class="status-dot"></span>Research project</span>
+    </nav>
+  </header>
   <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
+    <section class="publication-header page-width" id="top" aria-labelledby="paper-title">
+      <h1 id="paper-title" aria-label="DexSimWAM: Scaling Dexterous World Action Models with Verified Simulation Data"><span class="project-name">DexSimWAM</span> <span class="paper-title">Scaling Dexterous World Action Models<br class="desktop-break"> with Verified Simulation Data</span></h1>
+      <p class="publication-authors">Anonymous authors</p>
+      <p class="review-status">Paper under double-blind review</p>
+    </section>
+    <section class="teaser-section page-width" id="teaser" aria-label="Overview video">
+      <figure>
+        <!-- MEDIA: Set data-src to your overview MP4; optionally set data-poster. -->
+        <div class="media-frame teaser-frame" data-media="video" data-src="" data-poster="" data-label="DexSimWAM overview video">
+          <div class="teaser-topline"><span><span class="status-dot"></span>DEXSIMWAM IN ACTION</span><span class="media-kind">Video placeholder</span></div>
+          <div class="media-placeholder teaser-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><p class="teaser-title">General reasoning.<br>Specialized action.<br><span>Continually evolving.</span></p><p class="placeholder-note">Overview video coming soon</p></div>
+          <div class="teaser-bottomline"><span>Teapot</span><span>PnP6D</span><span>Drawer</span><span>Trash bin</span><span class="teaser-bottom-note">A growing family of Task-WAMs <svg class="icon"><use href="#icon-arrow"/></svg></span></div>
+        </div>
+        <figcaption class="teaser-caption">A vision-language agent orchestrates specialized World Action Models—and helps them acquire new skills when existing capabilities fall short.</figcaption>
+      </figure>
+    </section>
+    <section class="abstract-section section-tint" id="abstract" aria-labelledby="abstract-title">
+      <div class="page-width abstract-layout">
+        <div><span class="eyebrow">The idea</span><h2 id="abstract-title">Abstract</h2></div>
+        <div class="abstract-content">
+            <p>Learning transferable dexterous manipulation policies is constrained by the scarcity of large-scale robot data. Simulation offers scale, but synthesizing dexterous trajectories is substantially harder than for grippers: the data must cover diverse multi-finger contacts and hand-object configurations while satisfying language-specified grasp and motion semantics. We introduce DexSimWAM, which combines an agent-guided, retrieval-based synthetic-data pipeline with large-scale World Action Model (WAM) pre-training and task-specific post-training. Given a language-specified task and verifier feedback, the agent guides scene sampling, grasp retrieval, optimization-based path planning, and bounded expansion of a physically validated object-frame grasp bank. Deterministic filters and fixed whole-task verification yield a 16k-hour corpus spanning diverse objects, scenes, grasp styles, and unilateral and bimanual behaviors. On this corpus, DexSimWAM jointly pre-trains visual-dynamics prediction and synchronized arm-hand action generation. Task-specific post-training then adapts the shared WAM with scalable simulation data and targeted real-robot trajectories, supporting 6D object reorientation, functional pouring, articulated-object interaction, long-horizon semantic rearrangement, direct sim-to-real deployment, and physical-domain refinement.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
+    </section>
+    <section class="content-section page-width" id="framework" aria-labelledby="framework-title">
+      <div class="section-heading"><span class="eyebrow">01 / Framework</span><h2 id="framework-title">DexSimWAM at a Glance</h2><p>Dispatch a capable Task-WAM when one is available. Otherwise, diagnose the gap and grow the family through recursive self-improvement.</p></div>
+      <figure class="framework-figure">
+        <!-- FIGURE: Replace this SVG and data-zoom-src with your final framework figure. -->
+        <button class="figure-button" type="button" data-zoom-src="static/images/agentic-wam-framework.svg" aria-label="Enlarge the DexSimWAM framework diagram">
+          <img src="static/images/agentic-wam-framework.svg" width="1400" height="680" alt="A vision-language agent dispatches a capable Task-WAM for closed-loop execution. Capability gaps trigger diagnosis, simulation data synthesis, post-training, and evaluation before model registration." loading="lazy">
+          <span class="expand-label"><svg class="icon"><use href="#icon-expand"/></svg>Expand figure</span>
         </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+        <figcaption>Conceptual overview. New or updated Task-WAMs are registered only after whole-task evaluation and prior-skill regression checks.</figcaption>
+      </figure>
+    </section>
+    <section class="content-section section-tint" id="skills" aria-labelledby="skills-title">
+      <div class="page-width">
+        <div class="section-heading"><span class="eyebrow">02 / Task-WAM family</span><h2 id="skills-title">Dexterous Skills in Simulation</h2><p>Task-scoped World Action Models cover PnP, teapot manipulation, PnP6D, and drawer interaction.</p></div>
+        <div class="media-grid simulation-grid">
+          <figure class="media-card">
+            <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/sim-pnp.jpg" aria-label="PnP simulation demonstration">
+                  <source src="static/videos/sim/pnp.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/sim/pnp.mp4">Open the video</a>.
+                </video>
+              </div>
+            <figcaption><span class="caption-tag">Simulation / 01</span><h3>PnP</h3><p>Picking and placing an object in simulation.</p></figcaption>
+          </figure>
+          <figure class="media-card">
+            <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/sim-teapot.jpg" aria-label="Teapot simulation demonstration">
+                  <source src="static/videos/sim/teapot.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/sim/teapot.mp4">Open the video</a>.
+                </video>
+              </div>
+            <figcaption><span class="caption-tag">Simulation / 02</span><h3>Teapot</h3><p>Coordinated teapot manipulation and pouring.</p></figcaption>
+          </figure>
+          <figure class="media-card">
+            <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/sim-pnp6d-cropped.jpg" aria-label="PnP6D simulation demonstration">
+                  <source src="static/videos/sim/pnp6d-cropped.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/sim/pnp6d-cropped.mp4">Open the video</a>.
+                </video>
+              </div>
+            <figcaption><span class="caption-tag">Simulation / 03</span><h3>PnP6D</h3><p>Pick-and-place with a target position and orientation.</p></figcaption>
+          </figure>
+          <figure class="media-card">
+            <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/sim-drawer.jpg" aria-label="Drawer simulation demonstration">
+                  <source src="static/videos/sim/drawer.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/sim/drawer.mp4">Open the video</a>.
+                </video>
+              </div>
+            <figcaption><span class="caption-tag">Simulation / 04</span><h3>Drawer</h3><p>Dexterous interaction with drawers and objects.</p></figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
+    <section class="content-section page-width" id="evolution" aria-labelledby="evolution-title">
+      <div class="section-heading"><span class="eyebrow">03 / Recursive self-improvement</span><h2 id="evolution-title">From Capability Gaps to New Skills</h2><p>Diagnostic probes guide targeted simulation data synthesis and post-training. Evaluation feeds the next iteration, with prior skills checked before registration.</p></div>
+      <ol class="evolution-steps" aria-label="Recursive self-improvement stages">
+        <li><span class="step-number">01</span><div><strong>Diagnose</strong><span>Identify capability gaps</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
+        <li><span class="step-number">02</span><div><strong>Synthesize</strong><span>Generate targeted sim data</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
+        <li><span class="step-number">03</span><div><strong>Post-train</strong><span>Improve or add a Task-WAM</span></div><svg class="icon"><use href="#icon-arrow"/></svg></li>
+        <li><span class="step-number">04</span><div><strong>Evaluate</strong><span>Check success &amp; prior skills</span></div></li>
+      </ol>
+      <div class="media-grid two-columns comparison-grid">
+        <figure class="media-card">
+          <div class="comparison-label"><span class="comparison-dot before"></span>Before post-training</div>
+          <!-- MEDIA: Use the same evaluation task in both comparison videos. -->
+          <div class="media-frame" data-media="video" data-src="" data-poster="" data-label="Task execution before post-training"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">Initial capability</span><span class="placeholder-note">Video coming soon</span></div></div>
+          <figcaption><h3>Identify the Limitation</h3><p>An unsupported case reveals where the current Task-WAM needs to improve.</p></figcaption>
+        </figure>
+        <figure class="media-card">
+          <div class="comparison-label"><span class="comparison-dot after"></span>After post-training</div>
+          <div class="media-frame accent-frame" data-media="video" data-src="" data-poster="" data-label="Task execution after post-training"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">Expanded capability</span><span class="placeholder-note">Video coming soon</span></div></div>
+          <figcaption><h3>Acquire a Reusable Skill</h3><p>Targeted training expands the model’s competence or adds a new specialist.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="content-section section-tint" id="composition" aria-labelledby="composition-title">
+      <div class="page-width">
+        <div class="section-heading"><span class="eyebrow">04 / Skill composition</span><h2 id="composition-title">Long-Horizon Tasks, Reusable Skills</h2><p>The agent decomposes complex requests and composes task-scoped policies into longer sequences of dexterous actions.</p></div>
+        <figure>
+          <!-- MEDIA: End-to-end long-horizon task demonstration. -->
+          <div class="media-frame wide-frame" data-media="video" data-src="" data-poster="" data-label="Long-horizon skill composition demonstration"><span class="frame-corner-label">END-TO-END DEMONSTRATION</span><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-play"/></svg></span><span class="placeholder-title">From one instruction to a sequence of skills</span><span class="placeholder-note">Video coming soon</span></div></div>
+          <figcaption class="sequence-caption"><span>Instruction</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Task decomposition</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Task-WAM dispatch</span><svg class="icon"><use href="#icon-arrow"/></svg><span>Closed-loop execution</span></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="content-section page-width" id="sim-to-real" aria-labelledby="transfer-title">
+      <div class="section-heading"><span class="eyebrow">05 / Sim-to-real transfer</span><h2 id="transfer-title">Dexterous Manipulation in the Real World</h2><p>Teapot manipulation, PnP6D, and trash collection on the physical robot. Teapot and PnP6D include Base and V.G. settings.</p></div>
+      <div class="media-grid three-columns real-task-grid">
+          <article class="task-demo" data-variant-group aria-labelledby="real-teapot-title">
+            <div class="task-demo-heading"><h3 id="real-teapot-title">Teapot</h3><span class="environment-tag real">REAL</span></div>
+            <div class="media-variant-tabs" role="tablist" aria-label="Teapot demonstrations">
+              <button type="button" id="real-teapot-base-tab" role="tab" aria-selected="true" aria-controls="real-teapot-base-panel" tabindex="0">Base</button>
+              <button type="button" id="real-teapot-vg-tab" role="tab" aria-selected="false" aria-controls="real-teapot-vg-panel" tabindex="-1">V.G.</button>
+            </div>
+            <div class="media-variant-panel" id="real-teapot-base-panel" role="tabpanel" aria-labelledby="real-teapot-base-tab">
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-teapot-base.jpg" aria-label="Teapot — Base — real-world demonstration">
+                  <source src="static/videos/real/teapot-base.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/teapot-base.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Coordinated teapot manipulation and pouring.</figcaption>
+              </figure>
+            </div>
+            <div class="media-variant-panel" id="real-teapot-vg-panel" role="tabpanel" aria-labelledby="real-teapot-vg-tab" hidden>
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-teapot-vg.jpg" aria-label="Teapot — V.G. — real-world demonstration">
+                  <source src="static/videos/real/teapot-vg.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/teapot-vg.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>The same task in a scene with additional objects.</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="task-demo" data-variant-group aria-labelledby="real-pnp6d-title">
+            <div class="task-demo-heading"><h3 id="real-pnp6d-title">PnP6D</h3><span class="environment-tag real">REAL</span></div>
+            <div class="media-variant-tabs" role="tablist" aria-label="PnP6D demonstrations">
+              <button type="button" id="real-pnp6d-base-tab" role="tab" aria-selected="true" aria-controls="real-pnp6d-base-panel" tabindex="0">Base</button>
+              <button type="button" id="real-pnp6d-vg-tab" role="tab" aria-selected="false" aria-controls="real-pnp6d-vg-panel" tabindex="-1">V.G.</button>
+            </div>
+            <div class="media-variant-panel" id="real-pnp6d-base-panel" role="tabpanel" aria-labelledby="real-pnp6d-base-tab">
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-pnp6d-base.jpg" aria-label="PnP6D — Base — real-world demonstration">
+                  <source src="static/videos/real/pnp6d-base.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/pnp6d-base.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Pick, reorient, and place an object at a target pose.</figcaption>
+              </figure>
+            </div>
+            <div class="media-variant-panel" id="real-pnp6d-vg-panel" role="tabpanel" aria-labelledby="real-pnp6d-vg-tab" hidden>
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-pnp6d-vg.jpg" aria-label="PnP6D — V.G. — real-world demonstration">
+                  <source src="static/videos/real/pnp6d-vg.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/pnp6d-vg.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Target-pose manipulation with additional objects in the scene.</figcaption>
+              </figure>
+            </div>
+          </article>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+          <article class="task-demo" data-variant-group aria-labelledby="real-trash-bin-title">
+            <div class="task-demo-heading"><h3 id="real-trash-bin-title">Trash Bin</h3><span class="environment-tag real">REAL</span></div>
+            <div class="media-variant-tabs" role="tablist" aria-label="Trash Bin demonstrations">
+              <button type="button" id="real-trash-bin-run-1-tab" role="tab" aria-selected="true" aria-controls="real-trash-bin-run-1-panel" tabindex="0">First-Attempt Success</button>
+              <button type="button" id="real-trash-bin-run-2-tab" role="tab" aria-selected="false" aria-controls="real-trash-bin-run-2-panel" tabindex="-1">Retry</button>
+            </div>
+            <div class="media-variant-panel" id="real-trash-bin-run-1-panel" role="tabpanel" aria-labelledby="real-trash-bin-run-1-tab">
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-trash-bin-run-1.jpg" aria-label="Trash Bin — First-Attempt Success — real-world demonstration">
+                  <source src="static/videos/real/trash-bin-run-1.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/trash-bin-run-1.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Collects all objects into the bin without retries.</figcaption>
+              </figure>
+            </div>
+            <div class="media-variant-panel" id="real-trash-bin-run-2-panel" role="tabpanel" aria-labelledby="real-trash-bin-run-2-tab" hidden>
+              <figure>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-trash-bin-run-2.jpg" aria-label="Trash Bin — Retry — real-world demonstration">
+                  <source src="static/videos/real/trash-bin-run-2.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/trash-bin-run-2.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Retries failed grasps and completes the trash collection task.</figcaption>
+              </figure>
+            </div>
+          </article>
+      </div>
+    </section>
+    <section class="content-section section-tint" id="drawer-rtc" aria-labelledby="drawer-rtc-title">
+      <div class="page-width">
+        <div class="section-heading"><span class="eyebrow">06 / RTC comparison</span><h2 id="drawer-rtc-title">Drawer Manipulation with and without RTC</h2><p>Real-world drawer manipulation with Non-RTC and Training-Time RTC settings.</p></div>
+        <div class="media-grid two-columns comparison-grid">
+          <figure class="media-card" id="real-drawer-non-rtc-panel">
+            <h3 class="comparison-label">Non-RTC</h3>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-drawer.jpg" aria-label="Drawer — Non-RTC — real-world demonstration">
+                  <source src="static/videos/real/drawer.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/drawer.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Drawer manipulation without RTC.</figcaption>
+              </figure>
+          <figure class="media-card" id="real-drawer-training-time-rtc-panel">
+            <h3 class="comparison-label">Training-Time RTC</h3>
+                <div class="media-frame has-media video-frame">
+                <video class="loaded-media" controls muted loop playsinline preload="metadata" poster="static/images/posters/real-drawer-training-time-rtc.jpg" aria-label="Drawer — Training-Time RTC — real-world demonstration">
+                  <source src="static/videos/real/drawer-training-time-rtc.mp4" type="video/mp4">
+                  Your browser does not support this video. <a href="static/videos/real/drawer-training-time-rtc.mp4">Open the video</a>.
+                </video>
+              </div>
+                <figcaption>Drawer manipulation with training-time RTC.</figcaption>
+              </figure>
+        </div>
+      </div>
+    </section>
+    <section class="content-section section-tint" id="results" aria-labelledby="results-title">
+      <div class="page-width">
+        <div class="section-heading"><span class="eyebrow">07 / Continual learning</span><h2 id="results-title">Growing Capabilities. Preserving Skills.</h2><p>Evaluate newly acquired capabilities alongside previously learned skills, using fixed whole-task success criteria.</p></div>
+        <div class="media-grid two-columns">
+          <figure class="media-card">
+            <!-- FIGURE: Add your measured capability-acquisition results. -->
+            <div class="media-frame image-frame" data-media="image" data-src="" data-label="Experimental results for capability acquisition"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-image"/></svg></span><span class="placeholder-title">Capability acquisition</span><span class="placeholder-note">Results figure coming soon</span></div></div>
+            <figcaption><h3>Continual Capability Expansion</h3><p>Track how post-training turns unsupported cases into executable skills.</p></figcaption>
+          </figure>
+          <figure class="media-card">
+            <!-- FIGURE: Add your measured prior-skill regression results. -->
+            <div class="media-frame image-frame" data-media="image" data-src="" data-label="Experimental results for prior-skill retention"><div class="media-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#icon-image"/></svg></span><span class="placeholder-title">Prior-skill retention</span><span class="placeholder-note">Results figure coming soon</span></div></div>
+            <figcaption><h3>Prior-Skill Regression Checks</h3><p>Verify that model updates preserve existing manipulation capabilities.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer page-width">
+    <a class="footer-brand" href="#top"><svg class="icon"><use href="#icon-mark"/></svg>DexSimWAM</a>
+    <p>Anonymous authors · Paper under double-blind review</p>
+    <p class="template-credit">Adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener noreferrer">Nerfies</a>.<br>Website template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
+  </footer>
+  <button class="scroll-to-top" type="button" aria-label="Back to top" hidden><svg class="icon"><use href="#icon-up"/></svg></button>
+  <dialog class="figure-dialog" id="figure-dialog" aria-label="Expanded research figure"><button class="dialog-close" type="button" aria-label="Close expanded figure"><svg class="icon"><use href="#icon-close"/></svg></button><img alt=""></dialog>
+</body>
+</html>

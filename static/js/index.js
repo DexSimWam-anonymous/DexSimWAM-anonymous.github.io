@@ -1,142 +1,258 @@
-window.HELP_IMPROVE_VIDEOJS = false;
+"use strict";
 
-// More Works Dropdown Functionality
-function toggleMoreWorks() {
-    const dropdown = document.getElementById('moreWorksDropdown');
-    const button = document.querySelector('.more-works-btn');
-    
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
-    } else {
-        dropdown.classList.add('show');
-        button.classList.add('active');
+// Keep speed, seeking and playback together inside each silent video player.
+function setupVideoPlayer(video) {
+  const frame = video.closest(".media-frame");
+  if (!frame || frame.querySelector(".video-controls")) return;
+
+  const silence = () => {
+    video.defaultMuted = true;
+    if (!video.muted) video.muted = true;
+    if (video.volume !== 0) video.volume = 0;
+  };
+  silence();
+  video.addEventListener("volumechange", silence);
+  video.defaultPlaybackRate = 1;
+  video.playbackRate = 1;
+
+  const controls = document.createElement("div");
+  controls.className = "video-controls";
+  controls.setAttribute("role", "group");
+  controls.setAttribute("aria-label", `Video controls: ${video.getAttribute("aria-label") || "Research video"}`);
+  controls.innerHTML = `
+    <div class="video-control-row">
+      <button class="video-play" type="button" aria-label="Play" title="Play">▶</button>
+      <input class="video-seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek video" disabled>
+      <span class="video-time">0:00</span>
+      <select class="video-speed" aria-label="Playback speed" title="Playback speed">
+        <option value="0.5">0.5×</option>
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+      <button class="video-fullscreen" type="button" aria-label="Enter fullscreen" title="Enter fullscreen"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>`;
+  const play = controls.querySelector(".video-play");
+  const seek = controls.querySelector(".video-seek");
+  const time = controls.querySelector(".video-time");
+  const speed = controls.querySelector(".video-speed");
+  const fullscreen = controls.querySelector(".video-fullscreen");
+  const formatTime = (seconds) => {
+    if (!Number.isFinite(seconds)) return "0:00";
+    return `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+  };
+  const updateTime = () => {
+    const duration = video.duration;
+    seek.disabled = !Number.isFinite(duration) || duration <= 0;
+    seek.value = seek.disabled ? "0" : String(video.currentTime / duration * 100);
+    seek.style.setProperty("--progress", `${seek.value}%`);
+    seek.setAttribute("aria-valuetext", `${formatTime(video.currentTime)} of ${formatTime(duration)}`);
+    time.textContent = formatTime(video.currentTime);
+    time.title = Number.isFinite(duration)
+      ? `${formatTime(video.currentTime)} / ${formatTime(duration)}`
+      : formatTime(video.currentTime);
+  };
+  let hideControlsTimer;
+  const revealControls = () => {
+    clearTimeout(hideControlsTimer);
+    frame.classList.add("controls-visible");
+    if (!video.paused) {
+      hideControlsTimer = setTimeout(() => frame.classList.remove("controls-visible"), 1800);
     }
+  };
+  const updatePlay = () => {
+    play.innerHTML = video.paused
+      ? '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="m9 5 10 7-10 7Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M8 6v12M16 6v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
+    frame.classList.toggle("is-playing", !video.paused);
+    revealControls();
+    play.title = video.paused ? "Play" : "Pause";
+    play.setAttribute("aria-label", play.title);
+  };
+  const togglePlay = async () => {
+    if (!video.paused) { video.pause(); return; }
+    silence();
+    try { await video.play(); }
+    catch { play.title = "Playback unavailable. Try again."; }
+  };
+  play.addEventListener("click", togglePlay);
+  video.addEventListener("click", (event) => {
+    if (event.pointerType === "touch" && !video.paused && !frame.classList.contains("controls-visible")) {
+      revealControls();
+      return;
+    }
+    togglePlay();
+  });
+  frame.addEventListener("pointermove", revealControls);
+  frame.addEventListener("pointerenter", revealControls);
+  frame.addEventListener("pointerleave", () => {
+    if (!video.paused) {
+      clearTimeout(hideControlsTimer);
+      frame.classList.remove("controls-visible");
+    }
+  });
+  controls.addEventListener("keydown", revealControls);
+  controls.addEventListener("pointerdown", revealControls);
+  ["play", "pause", "ended"].forEach((event) => video.addEventListener(event, updatePlay));
+  ["loadedmetadata", "durationchange", "timeupdate", "emptied"].forEach((event) => video.addEventListener(event, updateTime));
+  seek.addEventListener("input", () => {
+    if (Number.isFinite(video.duration)) video.currentTime = Number(seek.value) / 100 * video.duration;
+    updateTime();
+  });
+  speed.addEventListener("change", () => {
+    video.defaultPlaybackRate = Number(speed.value);
+    video.playbackRate = Number(speed.value);
+  });
+  video.addEventListener("ratechange", () => {
+    const rate = String(video.playbackRate);
+    if (![...speed.options].some((option) => option.value === rate)) {
+      speed.add(new Option(`${rate}×`, rate));
+    }
+    speed.value = rate;
+  });
+  fullscreen.hidden = !document.fullscreenEnabled && !video.webkitEnterFullscreen;
+  fullscreen.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement === frame) await document.exitFullscreen();
+      else if (frame.requestFullscreen && document.fullscreenEnabled) await frame.requestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    } catch { fullscreen.title = "Fullscreen unavailable"; }
+  });
+  document.addEventListener("fullscreenchange", () => {
+    fullscreen.title = document.fullscreenElement === frame ? "Exit fullscreen" : "Enter fullscreen";
+    fullscreen.setAttribute("aria-label", fullscreen.title);
+  });
+  frame.append(controls);
+  frame.classList.add("custom-video-player");
+  video.controls = false;
+  updateTime();
+  updatePlay();
 }
+document.querySelectorAll("video").forEach(setupVideoPlayer);
 
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const container = document.querySelector('.more-works-container');
-    const dropdown = document.getElementById('moreWorksDropdown');
-    const button = document.querySelector('.more-works-btn');
-    
-    if (container && !container.contains(event.target)) {
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
-    }
+// Base / V.G. and repeated rollouts stay grouped by task.
+document.querySelectorAll("[data-variant-group]").forEach((group) => {
+  const tabs = [...group.querySelectorAll('[role="tab"]')];
+  if (!tabs.length) return;
+
+  const selectTab = (selectedTab, moveFocus = false) => {
+    tabs.forEach((tab) => {
+      const selected = tab === selectedTab;
+      const panel = document.getElementById(tab.getAttribute("aria-controls"));
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      panel.hidden = !selected;
+      if (!selected) panel.querySelectorAll("video").forEach((video) => video.pause());
+    });
+    if (moveFocus) selectedTab.focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      selectTab(tabs[nextIndex], true);
+    });
+  });
 });
 
-// Close dropdown on escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        const dropdown = document.getElementById('moreWorksDropdown');
-        const button = document.querySelector('.more-works-btn');
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+// Add a path to any media frame's data-src in index.html to replace its placeholder.
+// Empty paths make no network requests. Original template media are never substituted.
+document.querySelectorAll("[data-media]").forEach((frame) => {
+  const source = frame.dataset.src.trim();
+  if (!source) return;
+
+  const isVideo = frame.dataset.media === "video";
+  const media = document.createElement(isVideo ? "video" : "img");
+  media.className = "loaded-media";
+  const label = frame.dataset.label || (isVideo ? "Research video" : "Research figure");
+
+  if (isVideo) {
+    media.controls = true;
+    media.muted = true;
+    media.loop = true;
+    media.playsInline = true;
+    media.preload = "metadata";
+    media.setAttribute("aria-label", label);
+    if (frame.dataset.poster) media.poster = frame.dataset.poster;
+  } else {
+    media.alt = label;
+    media.loading = "lazy";
+    media.decoding = "async";
+  }
+
+  media.addEventListener(isVideo ? "loadedmetadata" : "load", () => {
+    frame.classList.add("has-media");
+    if (isVideo) setupVideoPlayer(media);
+  }, { once: true });
+
+  media.addEventListener("error", () => {
+    frame.classList.remove("has-media");
+    if (isVideo) {
+      frame.querySelector(".video-controls")?.remove();
+      frame.classList.remove("custom-video-player");
     }
+    media.remove();
+    const note = frame.querySelector(".placeholder-note");
+    if (note) note.textContent = isVideo ? "Video unavailable" : "Figure unavailable";
+  }, { once: true });
+
+  frame.append(media);
+  media.src = source;
 });
 
-// Copy BibTeX to clipboard
-function copyBibTeX() {
-    const bibtexElement = document.getElementById('bibtex-code');
-    const button = document.querySelector('.copy-bibtex-btn');
-    const copyText = button.querySelector('.copy-text');
-    
-    if (bibtexElement) {
-        navigator.clipboard.writeText(bibtexElement.textContent).then(function() {
-            // Success feedback
-            button.classList.add('copied');
-            copyText.textContent = 'Cop';
-            
-            setTimeout(function() {
-                button.classList.remove('copied');
-                copyText.textContent = 'Copy';
-            }, 2000);
-        }).catch(function(err) {
-            console.error('Failed to copy: ', err);
-            // Fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = bibtexElement.textContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            button.classList.add('copied');
-            copyText.textContent = 'Cop';
-            setTimeout(function() {
-                button.classList.remove('copied');
-                copyText.textContent = 'Copy';
-            }, 2000);
-        });
-    }
+// Enlarge framework figures with native keyboard focus and Escape support.
+const figureDialog = document.getElementById("figure-dialog");
+if (figureDialog) {
+  const expandedImage = figureDialog.querySelector("img");
+  document.querySelectorAll("[data-zoom-src]").forEach((button) => {
+    button.addEventListener("click", () => {
+      expandedImage.src = button.dataset.zoomSrc;
+      expandedImage.alt = button.querySelector("img")?.alt || "Expanded research figure";
+      figureDialog.showModal();
+    });
+  });
+  figureDialog.querySelector(".dialog-close").addEventListener("click", () => figureDialog.close());
+  figureDialog.addEventListener("click", (event) => {
+    const rect = figureDialog.getBoundingClientRect();
+    if (event.target === figureDialog && (
+      event.clientX < rect.left || event.clientX > rect.right ||
+      event.clientY < rect.top || event.clientY > rect.bottom
+    )) figureDialog.close();
+  });
 }
 
-// Scroll to top functionality
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+const scrollButton = document.querySelector(".scroll-to-top");
+if (scrollButton) {
+  const updateScrollButton = () => { scrollButton.hidden = window.scrollY < 600; };
+  window.addEventListener("scroll", updateScrollButton, { passive: true });
+  updateScrollButton();
+  scrollButton.addEventListener("click", () => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "instant" : "smooth" });
+  });
 }
 
-// Show/hide scroll to top button
-window.addEventListener('scroll', function() {
-    const scrollButton = document.querySelector('.scroll-to-top');
-    if (window.pageYOffset > 300) {
-        scrollButton.classList.add('visible');
-    } else {
-        scrollButton.classList.remove('visible');
-    }
-});
-
-// Video carousel autoplay when in view
-function setupVideoCarouselAutoplay() {
-    const carouselVideos = document.querySelectorAll('.results-carousel video');
-    
-    if (carouselVideos.length === 0) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                // Video is in view, play it
-                video.play().catch(e => {
-                    // Autoplay failed, probably due to browser policy
-                    console.log('Autoplay prevented:', e);
-                });
-            } else {
-                // Video is out of view, pause it
-                video.pause();
-            }
-        });
-    }, {
-        threshold: 0.5 // Trigger when 50% of the video is visible
+// Highlight the current section without hiding content when JavaScript is unavailable.
+const navLinks = [...document.querySelectorAll(".nav-links a")];
+const sections = [...document.querySelectorAll("main > section[id]")];
+if ("IntersectionObserver" in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((link) => {
+        if (link.hash === `#${entry.target.id}`) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
     });
-    
-    carouselVideos.forEach(video => {
-        observer.observe(video);
-    });
+  }, { rootMargin: "-15% 0px -55% 0px", threshold: 0 });
+  sections.forEach((section) => sectionObserver.observe(section));
 }
-
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
-    var options = {
-		slidesToScroll: 1,
-		slidesToShow: 1,
-		loop: true,
-		infinite: true,
-		autoplay: true,
-		autoplaySpeed: 5000,
-    }
-
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
-    
-    // Setup video autoplay for carousel
-    setupVideoCarouselAutoplay();
-
-})
