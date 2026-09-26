@@ -1,17 +1,24 @@
 "use strict";
 
-// Keep speed, seeking and playback together inside each silent video player.
+// Keep playback controls together; only the overview player exposes its audio.
 function setupVideoPlayer(video) {
   const frame = video.closest(".media-frame");
   if (!frame || frame.querySelector(".video-controls")) return;
+  const audioEnabled = frame.dataset.audio === "true";
 
   const silence = () => {
     video.defaultMuted = true;
     if (!video.muted) video.muted = true;
     if (video.volume !== 0) video.volume = 0;
   };
-  silence();
-  video.addEventListener("volumechange", silence);
+  if (audioEnabled) {
+    video.defaultMuted = false;
+    video.muted = false;
+    video.volume = 1;
+  } else {
+    silence();
+    video.addEventListener("volumechange", silence);
+  }
   video.defaultPlaybackRate = 1;
   video.playbackRate = 1;
 
@@ -24,6 +31,10 @@ function setupVideoPlayer(video) {
       <button class="video-play" type="button" aria-label="Play" title="Play">▶</button>
       <input class="video-seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek video" disabled>
       <span class="video-time">0:00</span>
+      ${audioEnabled ? `<div class="video-volume-control">
+        <button class="video-volume-button" type="button" aria-label="Mute" title="Mute"></button>
+        <input class="video-volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" aria-valuetext="100%">
+      </div>` : ""}
       <select class="video-speed" aria-label="Playback speed" title="Playback speed">
         <option value="0.5">0.5×</option>
         <option value="0.75">0.75×</option>
@@ -37,6 +48,8 @@ function setupVideoPlayer(video) {
   const play = controls.querySelector(".video-play");
   const seek = controls.querySelector(".video-seek");
   const time = controls.querySelector(".video-time");
+  const volumeButton = controls.querySelector(".video-volume-button");
+  const volume = controls.querySelector(".video-volume");
   const speed = controls.querySelector(".video-speed");
   const fullscreen = controls.querySelector(".video-fullscreen");
   const formatTime = (seconds) => {
@@ -71,9 +84,22 @@ function setupVideoPlayer(video) {
     play.title = video.paused ? "Play" : "Pause";
     play.setAttribute("aria-label", play.title);
   };
+  const updateVolume = () => {
+    if (!audioEnabled) return;
+    const level = video.muted ? 0 : video.volume;
+    volume.value = String(level);
+    volume.style.setProperty("--volume", `${level * 100}%`);
+    volume.setAttribute("aria-valuetext", `${Math.round(level * 100)}%`);
+    const muted = level === 0;
+    volumeButton.innerHTML = muted
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/><path d="m17 10 4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6m2-8a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+    volumeButton.title = muted ? "Unmute" : "Mute";
+    volumeButton.setAttribute("aria-label", volumeButton.title);
+  };
   const togglePlay = async () => {
     if (!video.paused) { video.pause(); return; }
-    silence();
+    if (!audioEnabled) silence();
     try { await video.play(); }
     catch { play.title = "Playback unavailable. Try again."; }
   };
@@ -101,6 +127,27 @@ function setupVideoPlayer(video) {
     if (Number.isFinite(video.duration)) video.currentTime = Number(seek.value) / 100 * video.duration;
     updateTime();
   });
+  if (audioEnabled) {
+    let previousVolume = 1;
+    volume.addEventListener("input", () => {
+      const level = Number(volume.value);
+      video.volume = level;
+      video.muted = level === 0;
+      if (level > 0) previousVolume = level;
+      updateVolume();
+    });
+    volumeButton.addEventListener("click", () => {
+      if (video.muted || video.volume === 0) {
+        video.volume = previousVolume || 1;
+        video.muted = false;
+      } else {
+        previousVolume = video.volume;
+        video.muted = true;
+      }
+      updateVolume();
+    });
+    video.addEventListener("volumechange", updateVolume);
+  }
   speed.addEventListener("change", () => {
     video.defaultPlaybackRate = Number(speed.value);
     video.playbackRate = Number(speed.value);
@@ -129,6 +176,7 @@ function setupVideoPlayer(video) {
   video.controls = false;
   updateTime();
   updatePlay();
+  updateVolume();
 }
 document.querySelectorAll("video").forEach(setupVideoPlayer);
 
@@ -177,7 +225,7 @@ document.querySelectorAll("[data-media]").forEach((frame) => {
 
   if (isVideo) {
     media.controls = true;
-    media.muted = true;
+    media.muted = frame.dataset.audio !== "true";
     media.loop = true;
     media.playsInline = true;
     media.preload = "metadata";
