@@ -43,6 +43,8 @@
     progress.className = "drawer-story-progress";
     progress.setAttribute("aria-label", "Figure chapters");
     progress.innerHTML = STAGES.map((stage) => `<button type="button" data-story-jump="${stage.key}" aria-label="Go to ${stage.eyebrow}"><span>${stage.number}</span><b>${stage.key === "overall" ? "Overall" : stage.key === "tasks" ? "Tasks" : "Compare"}</b><i></i></button>`).join("");
+    const methodLegend = root.querySelector(".drawer-legend");
+    if (methodLegend) progress.append(methodLegend);
     panels.before(progress);
     progress.querySelectorAll("[data-story-jump]").forEach((button) => button.addEventListener("click", () => root.querySelector(`[data-story-stage="${button.dataset.storyJump}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" })));
     const reducedMotion = global.matchMedia("(prefers-reduced-motion: reduce)");
