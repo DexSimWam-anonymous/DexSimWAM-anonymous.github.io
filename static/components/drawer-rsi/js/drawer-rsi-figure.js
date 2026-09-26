@@ -228,8 +228,9 @@
           const labelX = margin.left + eventIndex * slotWidth + 8 + labelOffset;
           const labelY = 58;
           const dotY = labelY - 3;
+          const leaderBendY = labelY + 22;
           svg.append("path").attr("class", "drawer-intervention-leader")
-            .attr("d", `M${labelX + 10},${dotY + 10} L${eventX},${margin.top - 5}`);
+            .attr("d", `M${labelX + 10},${dotY + 9} L${labelX + 10},${leaderBendY} L${eventX},${margin.top - 5}`);
           svg.append("circle").attr("class", "drawer-intervention-dot")
             .attr("cx", labelX + 10).attr("cy", dotY).attr("r", 9);
           svg.append("text").attr("class", "drawer-intervention-number")
