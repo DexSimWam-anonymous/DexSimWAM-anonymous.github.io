@@ -165,11 +165,7 @@
       const stepTop = taskTop + taskHeight + 56;
       const stepHeight = 156;
       const height = stepTop + stepHeight + margin.bottom;
-      const visible = new Set(
-        Array.from(root.querySelectorAll("button[data-series]"))
-          .filter((button) => button.getAttribute("aria-pressed") !== "false")
-          .map((button) => button.dataset.series)
-      );
+      const visible = new Set(["RSI", "Baseline"]);
 
       d3.select(panel).selectAll("*").remove();
       panel.dataset.trajectoryMethod = activeMethod;
@@ -420,9 +416,6 @@
         });
     }
 
-    root.querySelectorAll("button[data-series]").forEach((button) => {
-      button.addEventListener("click", () => setTimeout(draw, 0));
-    });
     let lastWidth = Math.round(panel.getBoundingClientRect().width);
     let resizeTimer = null;
     const observer = new ResizeObserver(() => {

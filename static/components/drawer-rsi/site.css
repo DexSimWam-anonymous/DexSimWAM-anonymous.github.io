@@ -73,12 +73,10 @@ html,body{margin:0;overflow-x:clip;background:#fff;color:#191817}body{padding:18
 #drawer-rsi-figure .drawer-story-progress button:hover{color:#343383!important;background:rgba(52,51,131,.045)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active{color:#343383!important;background:rgba(52,51,131,.065)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active i{transform:scaleX(1)}
-#drawer-rsi-figure .drawer-story-progress .drawer-legend{flex-wrap:nowrap;gap:10px;margin-left:5px;padding-left:12px;border-left:1px solid rgba(52,51,131,.16)}
-#drawer-rsi-figure .drawer-story-progress .drawer-legend button{display:inline-flex!important;grid-template-columns:none!important;gap:6px!important;width:auto!important;height:36px!important;padding:0 3px!important;border-radius:0!important;background:transparent!important;color:var(--drawer-text)!important}
-#drawer-rsi-figure .drawer-story-progress .drawer-legend button+button::before{display:none!important}
-#drawer-rsi-figure .drawer-story-progress .drawer-legend-mark{width:26px}
+#drawer-rsi-figure .drawer-story-overall .drawer-legend{justify-content:flex-end;gap:14px;margin:0 4px 10px}
+#drawer-rsi-figure .drawer-story-overall .drawer-legend button{padding:4px 0}
 @media(max-width:700px){#drawer-rsi-figure .drawer-story-progress{top:6px!important;padding:4px!important}#drawer-rsi-figure .drawer-story-progress button{grid-template-columns:1fr!important;width:42px!important;padding:0 8px!important}#drawer-rsi-figure .drawer-story-progress button b{display:none}#drawer-rsi-figure .drawer-story-progress button+button::before{top:10px;height:16px}}
-@media(max-width:700px){#drawer-rsi-figure .drawer-story-progress .drawer-legend{gap:7px;margin-left:2px;padding-left:8px}#drawer-rsi-figure .drawer-story-progress .drawer-legend button{width:auto!important;padding:0 2px!important;font-size:11px}#drawer-rsi-figure .drawer-story-progress .drawer-legend-mark{width:22px}}
+@media(max-width:700px){#drawer-rsi-figure .drawer-story-overall .drawer-legend{gap:12px;margin-right:0}}
 
 /* Paper-facing method switch and continuous baseline dashes. */
 #drawer-rsi-figure .drawer-series-line.baseline,#drawer-rsi-figure .drawer-best-line.baseline{stroke-dasharray:4 2.25!important;stroke-linecap:round;stroke-linejoin:round}

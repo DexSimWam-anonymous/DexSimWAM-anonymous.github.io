@@ -17,6 +17,7 @@
     const overall = panels?.querySelector('.drawer-panel[data-metric="overall"]');
     const tasks = ["close", "middle", "top"].map((metric) => panels?.querySelector(`.drawer-panel[data-metric="${metric}"]`));
     const comparison = panels?.querySelector("[data-trajectory-panel]");
+    const methodLegend = root.querySelector(".drawer-legend");
     if (!panels || !overall || tasks.some((panel) => !panel) || !comparison) return;
     root.dataset.scrollStoryInitialized = "true";
     const stageElements = [];
@@ -27,7 +28,10 @@
       section.append(stageHeader(stage));
       const frame = document.createElement("div");
       frame.className = "drawer-story-frame";
-      if (stage.key === "overall") frame.append(overall);
+      if (stage.key === "overall") {
+        if (methodLegend) frame.append(methodLegend);
+        frame.append(overall);
+      }
       if (stage.key === "tasks") {
         const branches = document.createElement("div");
         branches.className = "drawer-story-branches";
@@ -43,8 +47,6 @@
     progress.className = "drawer-story-progress";
     progress.setAttribute("aria-label", "Figure chapters");
     progress.innerHTML = STAGES.map((stage) => `<button type="button" data-story-jump="${stage.key}" aria-label="Go to ${stage.eyebrow}"><span>${stage.number}</span><b>${stage.key === "overall" ? "Overall" : stage.key === "tasks" ? "Tasks" : "Compare"}</b><i></i></button>`).join("");
-    const methodLegend = root.querySelector(".drawer-legend");
-    if (methodLegend) progress.append(methodLegend);
     panels.before(progress);
     progress.querySelectorAll("[data-story-jump]").forEach((button) => button.addEventListener("click", () => root.querySelector(`[data-story-stage="${button.dataset.storyJump}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" })));
     const reducedMotion = global.matchMedia("(prefers-reduced-motion: reduce)");

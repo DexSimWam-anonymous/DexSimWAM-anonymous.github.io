@@ -256,7 +256,7 @@
       ["RSI", "Baseline"].forEach((name) => {
         const cssName = name === "RSI" ? "rsi" : "baseline";
         const group = svg.append("g").attr("data-series-group", name)
-          .style("display", visible.has(name) ? null : "none");
+          .style("display", !isOverall || visible.has(name) ? null : "none");
         group.append("path").datum(series[name])
           .attr("class", `drawer-series-line ${cssName}`).attr("d", line);
 
@@ -334,7 +334,7 @@
         guide.attr("x1", mouseX).attr("x2", mouseX).style("display", null);
         let rows = `<div><strong>Step ≈ ${formatStep(Math.round(step))}</strong></div>`;
         ["RSI", "Baseline"].forEach((name) => {
-          if (!visible.has(name)) {
+          if (isOverall && !visible.has(name)) {
             markers[name].style("display", "none");
             return;
           }
@@ -426,7 +426,7 @@
       ["Baseline", "RSI"].forEach((name) => {
         const cssName = name === "RSI" ? "rsi" : "baseline";
         const group = svg.append("g").attr("data-series-group", name)
-          .style("display", visible.has(name) ? null : "none");
+          .style("display", null);
         group.append("path").datum(best[name])
           .attr("class", `drawer-best-area ${cssName}`).attr("d", area);
         group.append("path").datum(best[name])
@@ -486,10 +486,6 @@
         guide.attr("x1", mouseX).attr("x2", mouseX).style("display", null);
         let rows = `<div><strong>Best observed by step ${formatStep(Math.round(step))}</strong></div>`;
         ["RSI", "Baseline"].forEach((name) => {
-          if (!visible.has(name)) {
-            markers[name].style("display", "none");
-            return;
-          }
           const value = valueAt(best[name], step);
           markers[name].attr("cx", mouseX).attr("cy", y(value)).style("display", null);
           rows += `<div class="drawer-tooltip-row"><span>${name === "RSI" ? "Agent scheduling" : "Static baseline"}</span><strong>${Math.round(value * 100)}%</strong></div>`;
