@@ -94,15 +94,8 @@ html,body{margin:0;overflow-x:clip;background:#fff;color:#191817}body{padding:18
 #drawer-rsi-figure .drawer-trajectory-panel[data-trajectory-method=Baseline] .drawer-trajectory-line.lane-top,#drawer-rsi-figure .drawer-trajectory-panel[data-trajectory-method=Baseline] .drawer-trajectory-legend .lane-top .drawer-trajectory-legend-line{stroke-dasharray:1.5 2.25}
 @media(max-width:620px){#drawer-rsi-figure .drawer-trajectory-toolbar{justify-content:space-between}#drawer-rsi-figure .drawer-trajectory-toolbar button{padding:7px 10px}}
 
-/* Task identity stays clear even where trajectories overlap. */
-#drawer-rsi-figure{--drawer-close:#315fca;--drawer-middle:#d5793b;--drawer-top:#34765b}
-#drawer-rsi-figure .drawer-trajectory-line.lane-close,#drawer-rsi-figure .drawer-trajectory-legend .lane-close .drawer-trajectory-legend-line{stroke:var(--drawer-close)!important;stroke-width:2.25!important;stroke-dasharray:none!important;opacity:1!important}
-#drawer-rsi-figure .drawer-trajectory-line.lane-middle,#drawer-rsi-figure .drawer-trajectory-legend .lane-middle .drawer-trajectory-legend-line{stroke:var(--drawer-middle)!important;stroke-width:2.25!important;stroke-dasharray:8 4!important;opacity:1!important}
-#drawer-rsi-figure .drawer-trajectory-line.lane-top,#drawer-rsi-figure .drawer-trajectory-legend .lane-top .drawer-trajectory-legend-line{stroke:var(--drawer-top)!important;stroke-width:2.25!important;stroke-dasharray:2 4!important;opacity:1!important}
-#drawer-rsi-figure .drawer-trajectory-nodes.lane-close .drawer-trajectory-node{stroke:var(--drawer-close)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-close .drawer-trajectory-node-core{fill:var(--drawer-close)!important}
-#drawer-rsi-figure .drawer-trajectory-nodes.lane-middle .drawer-trajectory-node{stroke:var(--drawer-middle)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-middle .drawer-trajectory-node-core{fill:var(--drawer-middle)!important}
-#drawer-rsi-figure .drawer-trajectory-nodes.lane-top .drawer-trajectory-node{stroke:var(--drawer-top)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-top .drawer-trajectory-node-core{fill:var(--drawer-top)!important}
-#drawer-rsi-figure .drawer-trajectory-legend .lane-close .drawer-trajectory-node{stroke:var(--drawer-close)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-close text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-close{fill:var(--drawer-close)!important}
-#drawer-rsi-figure .drawer-trajectory-legend .lane-middle .drawer-trajectory-node{stroke:var(--drawer-middle)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-middle text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-middle{fill:var(--drawer-middle)!important}
-#drawer-rsi-figure .drawer-trajectory-legend .lane-top .drawer-trajectory-node{stroke:var(--drawer-top)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-top text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-top{fill:var(--drawer-top)!important}
+/* Distinguish tasks with line and marker patterns while keeping one method color. */
+#drawer-rsi-figure .drawer-trajectory-line.lane-close,#drawer-rsi-figure .drawer-trajectory-legend .lane-close .drawer-trajectory-legend-line{stroke-width:2.35!important;stroke-dasharray:none!important;opacity:1!important}
+#drawer-rsi-figure .drawer-trajectory-line.lane-middle,#drawer-rsi-figure .drawer-trajectory-legend .lane-middle .drawer-trajectory-legend-line{stroke-width:2.2!important;stroke-dasharray:8 4!important;opacity:1!important}
+#drawer-rsi-figure .drawer-trajectory-line.lane-top,#drawer-rsi-figure .drawer-trajectory-legend .lane-top .drawer-trajectory-legend-line{stroke-width:2.2!important;stroke-dasharray:1.5 4!important;opacity:1!important}
 #drawer-rsi-figure .drawer-trajectory-legend text{font-size:12px!important;font-weight:650}
