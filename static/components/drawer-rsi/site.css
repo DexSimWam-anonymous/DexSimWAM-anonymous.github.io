@@ -44,7 +44,7 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-comparison{background:linear-gradient(180deg,rgba(52,51,131,.075),rgba(255,255,255,.55) 36%);border-color:rgba(52,51,131,.22)}
 #drawer-rsi-figure .drawer-story-comparison .drawer-trajectory-panel{padding:16px;border-radius:14px;background:rgba(255,255,255,.86);box-shadow:0 20px 54px rgba(31,29,61,.09);clip-path:inset(0 50% 0 50% round 14px);transition:clip-path 1.1s cubic-bezier(.2,.75,.2,1) .15s}
 #drawer-rsi-figure .drawer-story-comparison.is-visible .drawer-trajectory-panel{clip-path:inset(0 0 0 0 round 14px)}
-#drawer-rsi-figure .drawer-story-progress{position:fixed;left:max(12px,calc((100vw - 1280px)/2 - 54px));top:50%;z-index:20;display:grid;gap:5px;opacity:0;pointer-events:none;transform:translateY(-50%) translateX(-8px);transition:opacity .3s ease,transform .3s ease}
+#drawer-rsi-figure .drawer-story-progress{position:relative;left:auto;top:auto;z-index:20;display:grid;gap:5px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease}
 #drawer-rsi-figure .drawer-story-progress.is-on-canvas{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0)}
 #drawer-rsi-figure .drawer-story-progress button{display:grid;grid-template-columns:28px 18px;align-items:center;gap:5px;width:auto;height:28px;padding:0;border:0;background:transparent;color:#96918a;cursor:pointer}
 #drawer-rsi-figure .drawer-story-progress button span{font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -61,9 +61,9 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-branches::after,
 #drawer-rsi-figure .drawer-story-branches .drawer-panel::before{display:none!important}
 
-/* Horizontal chapter capsule keeps navigation clear of chart axes. */
+/* Horizontal chapter capsule scrolls naturally with the component. */
 #drawer-rsi-figure .drawer-story-stage::before{display:none!important}
-#drawer-rsi-figure .drawer-story-progress{position:sticky!important;left:auto!important;top:12px!important;z-index:30!important;display:flex!important;align-items:center;gap:3px;width:max-content;max-width:calc(100% - 24px);margin:16px auto 8px!important;padding:6px!important;border:1px solid rgba(52,51,131,.16);border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 12px 34px rgba(38,35,70,.11);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transform:translateY(-8px)!important;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.75,.2,1)}
+#drawer-rsi-figure .drawer-story-progress{position:relative!important;left:auto!important;top:auto!important;z-index:30!important;display:flex!important;align-items:center;gap:3px;width:max-content;max-width:calc(100% - 24px);margin:16px auto 8px!important;padding:6px!important;border:1px solid rgba(52,51,131,.16);border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 12px 34px rgba(38,35,70,.11);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transform:translateY(-8px)!important;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.75,.2,1)}
 #drawer-rsi-figure .drawer-story-progress.is-on-canvas{opacity:1;pointer-events:auto;transform:translateY(0)!important}
 #drawer-rsi-figure .drawer-story-progress button{position:relative;display:grid!important;grid-template-columns:24px auto!important;align-items:center;gap:5px;width:auto!important;height:36px!important;padding:0 12px!important;border:0!important;border-radius:999px!important;background:transparent!important;color:#8d8881!important;cursor:pointer;transition:color .25s ease,background .25s ease}
 #drawer-rsi-figure .drawer-story-progress button+button::before{content:"";position:absolute;left:-2px;top:11px;width:1px;height:14px;background:rgba(52,51,131,.13)}
@@ -73,7 +73,7 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-progress button:hover{color:#343383!important;background:rgba(52,51,131,.045)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active{color:#343383!important;background:rgba(52,51,131,.065)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active i{transform:scaleX(1)}
-@media(max-width:700px){#drawer-rsi-figure .drawer-story-progress{top:6px!important;padding:4px!important}#drawer-rsi-figure .drawer-story-progress button{grid-template-columns:1fr!important;width:42px!important;padding:0 8px!important}#drawer-rsi-figure .drawer-story-progress button b{display:none}#drawer-rsi-figure .drawer-story-progress button+button::before{top:10px;height:16px}}
+@media(max-width:700px){#drawer-rsi-figure .drawer-story-progress{top:auto!important;padding:4px!important}#drawer-rsi-figure .drawer-story-progress button{grid-template-columns:1fr!important;width:42px!important;padding:0 8px!important}#drawer-rsi-figure .drawer-story-progress button b{display:none}#drawer-rsi-figure .drawer-story-progress button+button::before{top:10px;height:16px}}
 
 /* Paper-facing method switch and continuous baseline dashes. */
 #drawer-rsi-figure .drawer-series-line.baseline,#drawer-rsi-figure .drawer-best-line.baseline{stroke-dasharray:4 2.25!important;stroke-linecap:round;stroke-linejoin:round}
