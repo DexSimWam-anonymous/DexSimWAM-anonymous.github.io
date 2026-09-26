@@ -33,14 +33,14 @@ button:enabled, summary { cursor: pointer; }
 .skip-link { position: fixed; left: 18px; top: -80px; z-index: 20; background: #fff; padding: 10px 16px; border: 1px solid var(--blue); border-radius: 8px; }
 .skip-link:focus { top: 12px; }
 .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgb(255 255 255 / 96%); backdrop-filter: blur(12px); }
-.site-nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 68px; }
-.nav-brand { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 750; letter-spacing: -.4px; color: var(--ink); white-space: nowrap; }
+.site-nav { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 32px; min-height: 68px; }
+.nav-brand { display: inline-flex; align-items: center; justify-self: start; gap: 9px; font-size: 15px; font-weight: 750; letter-spacing: -.4px; color: var(--ink); white-space: nowrap; }
 .brand-icon { display: grid; place-items: center; width: 29px; height: 29px; background: #edf2ff; border-radius: 8px; color: var(--blue); }
 .brand-icon .icon { width: 21px; height: 21px; stroke-width: 2; }
-.nav-links { display: flex; gap: 27px; align-items: center; }
+.nav-links { display: flex; justify-self: center; gap: 27px; align-items: center; }
 .nav-links a { color: var(--muted); font-size: 12px; font-weight: 550; white-space: nowrap; transition: color .2s; }
 .nav-links a:hover, .nav-links a[aria-current] { color: var(--blue); }
-.nav-spacer { width: 87px; flex: 0 0 87px; }
+.nav-spacer { width: 87px; justify-self: end; }
 .publication-header { padding-block: 59px 39px; text-align: center; }
 .project-name { display: block; margin-bottom: 15px; color: var(--blue); font-size: clamp(44px, 5.2vw, 66px); font-weight: 780; letter-spacing: -3px; line-height: 1.12; }
 .paper-title { display: block; max-width: 900px; margin-inline: auto; font-size: clamp(26px, 3vw, 37px); font-weight: 650; line-height: 1.24; letter-spacing: -1px; }
@@ -207,7 +207,7 @@ h3 { margin-bottom: 5px; color: #2b3951; font-size: 15px; font-weight: 600; lett
 @media (max-width: 760px) {
   html { scroll-padding-top: 124px; }
   .page-width { width: calc(100% - 40px); }
-  .site-nav { flex-direction: column; align-items: flex-start; gap: 9px; padding-block: 12px 11px; }
+  .site-nav { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding-block: 12px 11px; }
   .nav-brand { font-size: 14px; }
   .nav-links { justify-content: space-between; gap: 15px; width: 100%; }
   .nav-links a { font-size: 11px; }
