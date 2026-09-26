@@ -38,7 +38,7 @@
         const candidates = activeCandidates(), trajectory = candidates[selectedIndex] || candidates[0]; if (!trajectory) return;
         cases.innerHTML = candidates.map((row, candidateIndex) => { const sourceNote = row.step === step ? `step ${formatStep(step)}` : `nearest available · step ${formatStep(row.step)}`; const label = taskForMetric(row.metric)?.label || row.instruction; return `<button type="button" class="drawer-viewer-case ${row.success ? "is-success" : "is-failure"}" data-viewer-case="${candidateIndex}" aria-pressed="${candidateIndex === selectedIndex}"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(sourceNote)} · pool ${row.pool}</span><em>${row.success ? "Successful trajectory" : "Failure / edge case"}</em></button>`; }).join("");
         cases.querySelectorAll("[data-viewer-case]").forEach((button) => button.addEventListener("click", () => { selectedIndex = Number(button.dataset.viewerCase); render(); }));
-        frame.src = `viewer/index.html?embed=1&case=${encodeURIComponent(trajectory.case_id)}&view=overview`;
+        frame.src = `viewer/index.html?embed=1&case=${encodeURIComponent(trajectory.case_id)}&view=overview&font=times`;
       }
       section.querySelectorAll("[data-viewer-outcome]").forEach((button) => button.addEventListener("click", () => { if (button.disabled) return; activeOutcome = button.dataset.viewerOutcome; selectedIndex = 0; section.querySelectorAll("[data-viewer-outcome]").forEach((item) => item.setAttribute("aria-pressed", String(item === button))); render(); }));
       render();
