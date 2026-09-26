@@ -248,7 +248,7 @@
           const text = svg.append("text").attr("class", "drawer-intervention-label")
             .attr("x", labelX + 24).attr("y", labelY - 6);
           text.append("tspan").attr("x", labelX + 24).text(event.title);
-          text.append("tspan").attr("x", labelX + 24).attr("dy", 13).text(event.mix);
+          text.append("tspan").attr("x", labelX + 24).attr("dy", 15).text(event.mix);
         }
       });
 
