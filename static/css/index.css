@@ -84,7 +84,8 @@ h2 { color: var(--ink); font-size: clamp(25px, 2.6vw, 32px); font-weight: 650; l
 .expand-label { position: absolute; right: 15px; bottom: 12px; display: inline-flex; align-items: center; gap: 5px; color: #7b88a0; font-size: 9px; }
 .expand-label .icon { width: 12px; height: 12px; }
 .framework-figure > figcaption { max-width: 850px; margin: 17px auto 0; }
-.pipeline-heading { margin-top: 52px; }
+.pipeline-heading { max-width: 100%; margin-top: 52px; margin-bottom: 56px; }
+.pipeline-heading h2 { font-size: clamp(10px, 2.6vw, 32px); white-space: nowrap; }
 .pipeline-figure { margin-top: 0; }
 .rsi-section { overflow: hidden; background: #fff; border-top: 1px solid #ece9df; }
 .rsi-section-inner { width: min(1320px, calc(100% - 48px)); margin-inline: auto; }
@@ -238,7 +239,7 @@ h3 { margin-bottom: 5px; color: #2b3951; font-size: 15px; font-weight: 600; lett
   .sequence-caption .icon { width: 12px; height: 12px; }
   .expand-label { right: 8px; bottom: 5px; font-size: 8px; }
   .framework-figure > figcaption { font-size: 11px; }
-  .pipeline-heading { margin-top: 40px; }
+  .pipeline-heading { margin-top: 40px; margin-bottom: 44px; }
   .rsi-section-inner { width: calc(100% - 20px); }
   .rsi-embed-card { border-radius: 14px; }
   .rsi-embed { height: clamp(620px, 78vh, 760px); }
