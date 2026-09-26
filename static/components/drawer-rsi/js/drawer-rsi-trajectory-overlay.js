@@ -214,9 +214,6 @@
       svg.append("text").attr("class", "drawer-panel-title")
         .attr("x", margin.left).attr("y", 17)
         .text(`(e) Overlaid ${methodLabel} task success trajectories`);
-      svg.append("text").attr("class", "drawer-best-note")
-        .attr("x", width - margin.right).attr("y", 17).attr("text-anchor", "end")
-        .text(width < 620 ? "shared 0–100% axis" : "three task traces on one shared success-rate axis");
 
       const legend = svg.append("g").attr("class", "drawer-trajectory-legend")
         .attr("transform", `translate(${margin.left},38)`);

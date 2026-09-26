@@ -3,7 +3,7 @@
 <title>Drawer Policy Evolution under RSI</title>
 <meta name="description" content="Interactive RSI policy evaluation with draggable 3D trajectories.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23343383%22/><path d=%22M15 20h34v25H15z%22 fill=%22none%22 stroke=%22white%22 stroke-width=%224%22/><path d=%22M25 31h14%22 stroke=%22white%22 stroke-width=%224%22 stroke-linecap=%22round%22/></svg>">
-<link rel="stylesheet" href="site.css?v=scrolling-chapter-nav"></head><body><main class="site-shell">
+<link rel="stylesheet" href="site.css?v=follow-nav-clear-traces"></head><body><main class="site-shell">
 <div id="drawer-rsi-figure" class="drawer-rsi-figure" data-drawer-rsi-figure>
   <style>
     #drawer-rsi-figure {
@@ -102,7 +102,7 @@
       background: repeating-linear-gradient(90deg, var(--drawer-baseline) 0 7px, transparent 7px 11px);
     }
     #drawer-rsi-figure .drawer-legend-mark.baseline::after {
-      border-radius: 0;
+      border-radius: 50%;
       background: var(--drawer-baseline);
     }
     #drawer-rsi-figure .drawer-panels {
@@ -972,12 +972,11 @@
       <h2 id="drawer-rsi-heading">Drawer Policy Evolution under RSI</h2>
       <div class="drawer-legend" aria-label="Methods">
         <button type="button" data-series="RSI" aria-pressed="true">
-          <span class="drawer-legend-mark" aria-hidden="true"></span>Agent scheduling
+          <span class="drawer-legend-mark" aria-hidden="true"></span>RSI
         </button>
         <button type="button" data-series="Baseline" aria-pressed="true">
-          <span class="drawer-legend-mark baseline" aria-hidden="true"></span>Static baseline
+          <span class="drawer-legend-mark baseline" aria-hidden="true"></span>Baseline
         </button>
-        <span class="drawer-interaction-hint">click any RSI point to inspect the evaluation in 3D; drag the scene to change viewpoint</span>
       </div>
     </div>
 
@@ -1042,4 +1041,4 @@
   <noscript>This interactive figure requires JavaScript.</noscript>
 </div>
 
-</main><script src="vendor/d3.min.js"></script><script src="js/drawer-rsi-data.js"></script><script src="js/drawer-rsi-figure.js"></script><script src="js/drawer-rsi-trajectory-overlay.js"></script><script src="js/viewer-detail.js"></script><script src="js/scroll-story.js"></script></body></html>
+</main><script src="vendor/d3.min.js"></script><script src="js/drawer-rsi-data.js"></script><script src="js/drawer-rsi-figure.js"></script><script src="js/drawer-rsi-trajectory-overlay.js?v=clear-traces"></script><script src="js/viewer-detail.js"></script><script src="js/scroll-story.js?v=follow-nav"></script></body></html>

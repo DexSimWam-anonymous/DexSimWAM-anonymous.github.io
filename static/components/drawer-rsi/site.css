@@ -1,4 +1,4 @@
-html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:18px}.site-shell{width:min(1280px,100%);margin:0 auto}#drawer-rsi-figure{background:#fff!important;border:1px solid rgba(52,51,131,.16);border-radius:18px;padding:24px!important;box-shadow:0 20px 60px rgba(33,31,20,.08)}
+html,body{margin:0;overflow-x:clip;background:#fff;color:#191817}body{padding:18px}.site-shell{width:min(1280px,100%);margin:0 auto}#drawer-rsi-figure{background:#fff!important;border:1px solid rgba(52,51,131,.16);border-radius:18px;padding:24px!important;box-shadow:0 20px 60px rgba(33,31,20,.08)}
 #drawer-rsi-figure .drawer-detail-dialog{width:min(1180px,calc(100vw - 32px));max-width:1180px;padding:0;border:1px solid rgba(52,51,131,.22);border-radius:16px;background:#fff;box-shadow:0 30px 90px rgba(24,24,30,.25)}
 #drawer-rsi-figure .drawer-detail-shell{max-height:min(94vh,1040px);overflow:auto;padding:0 22px 22px}
 #drawer-rsi-figure .drawer-detail-header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);padding:18px 0 12px;border-bottom:1px solid rgba(52,51,131,.13)}
@@ -44,7 +44,7 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-comparison{background:linear-gradient(180deg,rgba(52,51,131,.075),rgba(255,255,255,.55) 36%);border-color:rgba(52,51,131,.22)}
 #drawer-rsi-figure .drawer-story-comparison .drawer-trajectory-panel{padding:16px;border-radius:14px;background:rgba(255,255,255,.86);box-shadow:0 20px 54px rgba(31,29,61,.09);clip-path:inset(0 50% 0 50% round 14px);transition:clip-path 1.1s cubic-bezier(.2,.75,.2,1) .15s}
 #drawer-rsi-figure .drawer-story-comparison.is-visible .drawer-trajectory-panel{clip-path:inset(0 0 0 0 round 14px)}
-#drawer-rsi-figure .drawer-story-progress{position:relative;left:auto;top:auto;z-index:20;display:grid;gap:5px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease}
+#drawer-rsi-figure .drawer-story-progress{position:sticky;left:auto;top:12px;z-index:20;display:grid;gap:5px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease}
 #drawer-rsi-figure .drawer-story-progress.is-on-canvas{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0)}
 #drawer-rsi-figure .drawer-story-progress button{display:grid;grid-template-columns:28px 18px;align-items:center;gap:5px;width:auto;height:28px;padding:0;border:0;background:transparent;color:#96918a;cursor:pointer}
 #drawer-rsi-figure .drawer-story-progress button span{font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -61,9 +61,9 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-branches::after,
 #drawer-rsi-figure .drawer-story-branches .drawer-panel::before{display:none!important}
 
-/* Horizontal chapter capsule scrolls naturally with the component. */
+/* Keep the chapter capsule visible while its component scrolls. */
 #drawer-rsi-figure .drawer-story-stage::before{display:none!important}
-#drawer-rsi-figure .drawer-story-progress{position:relative!important;left:auto!important;top:auto!important;z-index:30!important;display:flex!important;align-items:center;gap:3px;width:max-content;max-width:calc(100% - 24px);margin:16px auto 8px!important;padding:6px!important;border:1px solid rgba(52,51,131,.16);border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 12px 34px rgba(38,35,70,.11);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transform:translateY(-8px)!important;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.75,.2,1)}
+#drawer-rsi-figure .drawer-story-progress{position:sticky!important;left:auto!important;top:12px!important;z-index:30!important;display:flex!important;align-items:center;gap:3px;width:max-content;max-width:calc(100% - 24px);margin:16px auto 8px!important;padding:6px!important;border:1px solid rgba(52,51,131,.16);border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 12px 34px rgba(38,35,70,.11);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transform:translateY(-8px)!important;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.75,.2,1)}
 #drawer-rsi-figure .drawer-story-progress.is-on-canvas{opacity:1;pointer-events:auto;transform:translateY(0)!important}
 #drawer-rsi-figure .drawer-story-progress button{position:relative;display:grid!important;grid-template-columns:24px auto!important;align-items:center;gap:5px;width:auto!important;height:36px!important;padding:0 12px!important;border:0!important;border-radius:999px!important;background:transparent!important;color:#8d8881!important;cursor:pointer;transition:color .25s ease,background .25s ease}
 #drawer-rsi-figure .drawer-story-progress button+button::before{content:"";position:absolute;left:-2px;top:11px;width:1px;height:14px;background:rgba(52,51,131,.13)}
@@ -73,7 +73,7 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-story-progress button:hover{color:#343383!important;background:rgba(52,51,131,.045)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active{color:#343383!important;background:rgba(52,51,131,.065)!important}
 #drawer-rsi-figure .drawer-story-progress button.is-active i{transform:scaleX(1)}
-@media(max-width:700px){#drawer-rsi-figure .drawer-story-progress{top:auto!important;padding:4px!important}#drawer-rsi-figure .drawer-story-progress button{grid-template-columns:1fr!important;width:42px!important;padding:0 8px!important}#drawer-rsi-figure .drawer-story-progress button b{display:none}#drawer-rsi-figure .drawer-story-progress button+button::before{top:10px;height:16px}}
+@media(max-width:700px){#drawer-rsi-figure .drawer-story-progress{top:6px!important;padding:4px!important}#drawer-rsi-figure .drawer-story-progress button{grid-template-columns:1fr!important;width:42px!important;padding:0 8px!important}#drawer-rsi-figure .drawer-story-progress button b{display:none}#drawer-rsi-figure .drawer-story-progress button+button::before{top:10px;height:16px}}
 
 /* Paper-facing method switch and continuous baseline dashes. */
 #drawer-rsi-figure .drawer-series-line.baseline,#drawer-rsi-figure .drawer-best-line.baseline{stroke-dasharray:4 2.25!important;stroke-linecap:round;stroke-linejoin:round}
@@ -94,5 +94,15 @@ html,body{margin:0;overflow-x:hidden;background:#fff;color:#191817}body{padding:
 #drawer-rsi-figure .drawer-trajectory-panel[data-trajectory-method=Baseline] .drawer-trajectory-line.lane-top,#drawer-rsi-figure .drawer-trajectory-panel[data-trajectory-method=Baseline] .drawer-trajectory-legend .lane-top .drawer-trajectory-legend-line{stroke-dasharray:1.5 2.25}
 @media(max-width:620px){#drawer-rsi-figure .drawer-trajectory-toolbar{justify-content:space-between}#drawer-rsi-figure .drawer-trajectory-toolbar button{padding:7px 10px}}
 
-/* Keep the interaction hint inside the embedded card on narrow screens. */
-@media(max-width:620px){#drawer-rsi-figure .drawer-legend{width:100%;min-width:0}#drawer-rsi-figure .drawer-interaction-hint{width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere}}
+/* Task identity stays clear even where trajectories overlap. */
+#drawer-rsi-figure{--drawer-close:#315fca;--drawer-middle:#d5793b;--drawer-top:#34765b}
+#drawer-rsi-figure .drawer-trajectory-line.lane-close,#drawer-rsi-figure .drawer-trajectory-legend .lane-close .drawer-trajectory-legend-line{stroke:var(--drawer-close)!important;stroke-width:2.25!important;stroke-dasharray:none!important;opacity:1!important}
+#drawer-rsi-figure .drawer-trajectory-line.lane-middle,#drawer-rsi-figure .drawer-trajectory-legend .lane-middle .drawer-trajectory-legend-line{stroke:var(--drawer-middle)!important;stroke-width:2.25!important;stroke-dasharray:8 4!important;opacity:1!important}
+#drawer-rsi-figure .drawer-trajectory-line.lane-top,#drawer-rsi-figure .drawer-trajectory-legend .lane-top .drawer-trajectory-legend-line{stroke:var(--drawer-top)!important;stroke-width:2.25!important;stroke-dasharray:2 4!important;opacity:1!important}
+#drawer-rsi-figure .drawer-trajectory-nodes.lane-close .drawer-trajectory-node{stroke:var(--drawer-close)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-close .drawer-trajectory-node-core{fill:var(--drawer-close)!important}
+#drawer-rsi-figure .drawer-trajectory-nodes.lane-middle .drawer-trajectory-node{stroke:var(--drawer-middle)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-middle .drawer-trajectory-node-core{fill:var(--drawer-middle)!important}
+#drawer-rsi-figure .drawer-trajectory-nodes.lane-top .drawer-trajectory-node{stroke:var(--drawer-top)!important}#drawer-rsi-figure .drawer-trajectory-nodes.lane-top .drawer-trajectory-node-core{fill:var(--drawer-top)!important}
+#drawer-rsi-figure .drawer-trajectory-legend .lane-close .drawer-trajectory-node{stroke:var(--drawer-close)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-close text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-close{fill:var(--drawer-close)!important}
+#drawer-rsi-figure .drawer-trajectory-legend .lane-middle .drawer-trajectory-node{stroke:var(--drawer-middle)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-middle text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-middle{fill:var(--drawer-middle)!important}
+#drawer-rsi-figure .drawer-trajectory-legend .lane-top .drawer-trajectory-node{stroke:var(--drawer-top)!important}#drawer-rsi-figure .drawer-trajectory-legend .lane-top text,#drawer-rsi-figure .drawer-trajectory-best-label.lane-top{fill:var(--drawer-top)!important}
+#drawer-rsi-figure .drawer-trajectory-legend text{font-size:12px!important;font-weight:650}
