@@ -88,7 +88,7 @@
     function openDetails(name, index, trigger) {
       const point = series[name][index];
       lastDetailTrigger = trigger || null;
-      detailTitle.textContent = `${name === "RSI" ? "Agent scheduling" : "Static baseline"}   step ${formatStep(point.step)}`;
+      detailTitle.textContent = `${name === "RSI" ? "Agent scheduling" : "Static baseline"} · step ${formatStep(point.step)}`;
 
       const resultRows = METRICS.map(([metric, label]) => {
         const numerator = point.counts[metric];
