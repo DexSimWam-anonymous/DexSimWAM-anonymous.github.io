@@ -71,7 +71,7 @@ async function loadRow(index) {
   setView(view); update(0); ui.loading.hidden = true; parent.postMessage({ type: "drawer-rsi-viewer-ready", caseId: row.case_id }, "*");
 }
 function populateStep(step, preferredCase) { rows = manifest.trajectories.filter((x) => x.step === step); ui.trajectory.innerHTML = rows.map((r, index) => `<option value="${r.case_id}">${r.instruction} · ${r.success ? "success" : "failure"} · example ${index + 1}</option>`).join(""); const index = preferredCase ? rows.findIndex((r) => r.case_id === preferredCase) : 0; loadRow(index).catch(showError); }
-function showError(e) { ui.loading.hidden = false; ui.loading.textContent = `Unable to load: ${e.message}`; ui.status.textContent = "ERROR"; console.error(e); }
+function showError(e) { ui.loading.hidden = false; ui.loading.textContent = "Unable to load this trajectory."; ui.status.textContent = ""; console.error(e); }
 function animate(now) { if (playing && payload) { const next = timeAnchor + (now - playAnchor) / 1000 * Number(ui.speed.value); if (next >= payload.duration_s) { update(payload.duration_s); playing = false; ui.play.textContent = "Play"; } else update(next); } controls?.update(); renderer?.render(scene, camera); requestAnimationFrame(animate); }
 
 ui.step.addEventListener("change", () => populateStep(Number(ui.step.value))); ui.trajectory.addEventListener("change", () => loadRow(rows.findIndex((r) => r.case_id === ui.trajectory.value)).catch(showError));
@@ -80,7 +80,7 @@ ui.play.addEventListener("click", () => { if (!playing && currentTime >= payload
 ui.time.addEventListener("input", () => { update(Number(ui.time.value)); playAnchor = performance.now(); timeAnchor = currentTime; }); $("overview").addEventListener("click", () => setView("overview")); $("closeup").addEventListener("click", () => setView("closeup"));
 
 try {
-  manifest = await fetch(new URL("../manifest.json", location.href)).then((r) => { if (!r.ok) throw new Error(`${r.status} manifest.json`); return r.json(); });
+  manifest = await fetch(new URL("../manifest.json?v=public-cleanup", location.href)).then((r) => { if (!r.ok) throw new Error(`${r.status} manifest.json`); return r.json(); });
   ui.step.innerHTML = manifest.steps.map((s) => `<option value="${s}">${s.toLocaleString()}</option>`).join(""); initScene();
   const caseId = query.get("case"), selected = caseId ? manifest.trajectories.find((r) => r.case_id === caseId) : null, step = selected?.step ?? (Number(query.get("step")) || manifest.steps[0]); ui.step.value = step; populateStep(step, caseId);
 } catch (e) { showError(e); }

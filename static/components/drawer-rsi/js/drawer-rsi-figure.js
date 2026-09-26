@@ -68,8 +68,7 @@
 
     const d3 = global.d3;
     const data = global.DRAWER_RSI_DATA;
-    if (!d3) return fail("Drawer RSI figure could not start because D3 is not loaded.");
-    if (!data) return fail("Drawer RSI figure could not start because its data bundle is not loaded.");
+    if (!d3 || !data) return fail("The interactive figure is temporarily unavailable.");
 
     root.dataset.drawerRsiInitialized = "true";
     if (loadingBox) loadingBox.remove();
@@ -109,12 +108,9 @@
         html += `<p class="drawer-detail-notice"><strong>Static baseline:</strong> no LLM revision, no synthetic-data generation, and no dynamic instruction, subtask, or learning-rate adjustment.</p>`;
       } else {
         const revision = data.revisions.find((item) => item.basedOnStep === point.step);
-        if (!revision) {
-          html += `<p class="drawer-detail-notice">No RSI revision is available for this evaluation boundary.</p>`;
-        } else {
+        if (revision) {
           const episodeCount = (value) => value === 0 ? "0" : `${value / 1000}k`;
           html += `
-            <p class="drawer-detail-status">Revision status: <strong>${escapeHtml(revision.status)}</strong></p>
             <dl class="drawer-detail-grid">
               <div><dt>Revision</dt><dd>r${revision.revision}</dd></div>
               <div><dt>Decision step</dt><dd>${formatStep(revision.basedOnStep)}</dd></div>
@@ -127,13 +123,6 @@
             </dl>
             <h4>Change from the preceding revision</h4>
             <p>${escapeHtml(revision.publicChange)}</p>`;
-
-          if (revision.metaRepair) {
-            html += `<p class="drawer-detail-notice">The complete Development Judge result was restored after a client crash; the dual-pool fail-closed repair was completed before this evaluation was accepted.</p>`;
-          }
-          if (revision.revision === 15) {
-            html += `<p class="drawer-detail-notice"><strong>Partially applied; no subsequent complete evaluation.</strong> The step-19,980 result predates r15 and must not be interpreted as the effect of this revision.</p>`;
-          }
         }
       }
 

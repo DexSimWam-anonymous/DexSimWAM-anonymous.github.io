@@ -10,7 +10,7 @@
     const data = global.DRAWER_RSI_DATA, dialog = root.querySelector(".drawer-detail-dialog"), content = root.querySelector(".drawer-detail-content");
     if (!data || !dialog || !content) return;
     root.dataset.viewerDetailInitialized = "true";
-    const manifestPromise = fetch("manifest.json").then((response) => { if (!response.ok) throw new Error(`${response.status} manifest.json`); return response.json(); });
+    const manifestPromise = fetch("manifest.json?v=public-cleanup").then((response) => { if (!response.ok) throw new Error(`${response.status} manifest.json`); return response.json(); });
 
     function nearest(trajectories, metric, step, success) {
       return trajectories.filter((row) => row.metric === metric && row.success === success).slice().sort((a, b) => Math.abs(a.step - step) - Math.abs(b.step - step) || a.step - b.step)[0] || null;
@@ -36,9 +36,9 @@
       function activeCandidates() { return groups[activeOutcome]; }
       function render() {
         const candidates = activeCandidates(), trajectory = candidates[selectedIndex] || candidates[0]; if (!trajectory) return;
-        cases.innerHTML = candidates.map((row, candidateIndex) => { const sourceNote = row.step === step ? `step ${formatStep(step)}` : `nearest available · step ${formatStep(row.step)}`; const label = taskForMetric(row.metric)?.label || row.instruction; return `<button type="button" class="drawer-viewer-case ${row.success ? "is-success" : "is-failure"}" data-viewer-case="${candidateIndex}" aria-pressed="${candidateIndex === selectedIndex}"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(sourceNote)} · pool ${row.pool}</span><em>${row.success ? "Successful trajectory" : "Failure / edge case"}</em></button>`; }).join("");
+        cases.innerHTML = candidates.map((row, candidateIndex) => { const sourceNote = row.step === step ? `step ${formatStep(step)}` : `nearest available · step ${formatStep(row.step)}`; const label = taskForMetric(row.metric)?.label || row.instruction; return `<button type="button" class="drawer-viewer-case ${row.success ? "is-success" : "is-failure"}" data-viewer-case="${candidateIndex}" aria-pressed="${candidateIndex === selectedIndex}"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(sourceNote)}</span><em>${row.success ? "Successful trajectory" : "Failure / edge case"}</em></button>`; }).join("");
         cases.querySelectorAll("[data-viewer-case]").forEach((button) => button.addEventListener("click", () => { selectedIndex = Number(button.dataset.viewerCase); render(); }));
-        frame.src = `viewer/index.html?embed=1&case=${encodeURIComponent(trajectory.case_id)}&view=overview&font=times`;
+        frame.src = `viewer/index.html?embed=1&case=${encodeURIComponent(trajectory.case_id)}&view=overview&font=times&cleanup=1`;
       }
       section.querySelectorAll("[data-viewer-outcome]").forEach((button) => button.addEventListener("click", () => { if (button.disabled) return; activeOutcome = button.dataset.viewerOutcome; selectedIndex = 0; section.querySelectorAll("[data-viewer-outcome]").forEach((item) => item.setAttribute("aria-pressed", String(item === button))); render(); }));
       render();
@@ -47,7 +47,7 @@
     root.addEventListener("drawer-rsi-detail-opened", (event) => {
       const { seriesName, metric, index } = event.detail || {};
       if (seriesName !== "RSI" || !metric || index < 0) return;
-      injectViewer(metric, index).catch((error) => { const notice = document.createElement("p"); notice.className = "drawer-detail-notice"; notice.textContent = `3D viewer could not load: ${error.message}`; content.prepend(notice); });
+      injectViewer(metric, index).catch(() => { const notice = document.createElement("p"); notice.className = "drawer-detail-notice"; notice.textContent = "The 3D replay is temporarily unavailable."; content.prepend(notice); });
     });
     dialog.addEventListener("close", () => { dialog.querySelectorAll("iframe.drawer-viewer-frame").forEach((frame) => { frame.src = "about:blank"; }); });
   }
